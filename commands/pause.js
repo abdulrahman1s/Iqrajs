@@ -3,7 +3,7 @@ module.exports = class extends require("../structures/Command") {
 		super(client, {
 			__filename,
 			help: "Pauses the bot.",
-			cooldown: 5,
+			cooldown: 3,
 			inVoiceChannel: true,
 			sameVoiceChannel: true,
 			playing: true

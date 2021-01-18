@@ -6,6 +6,7 @@ module.exports = class extends require("../../structures/Command") {
 	constructor(client) {
 		super(client, {
 			__filename,
+			aliases: ["p"],
 			help: {
 				content: "Plays a surah, ayah or page from the mushaf in a voice channel.",
 				usage: "<ayah|page|surah>",
