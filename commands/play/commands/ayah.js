@@ -34,6 +34,7 @@ module.exports = async (message, args) => {
 
 	try {
 		const connection = await message.member.voice.channel.join();
+		await connection.voice.setSelfDeaf(true);
 		connection.play(url).on("finish", () => message.guild.me.voice.channel.leave());
 
 		const embed = new MessageEmbed()

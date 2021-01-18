@@ -12,7 +12,7 @@ module.exports = class extends require("../structures/Command") {
 				content: "Lists all commands and how to use them.",
 				usage: "[command]"
 			},
-			cooldown: 5,
+			cooldown: 2,
 			inVoiceChannel: true
 		});
 	}

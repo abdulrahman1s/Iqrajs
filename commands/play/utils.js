@@ -7,9 +7,14 @@ async function get_reciter_data(type = "surah") {
 	if (type !== "ayah") url = "http://mp3quran.net/api/_english.php";
 
 	const res = await fetch(url);
-	const data = await res.json();
 
-	return data;
+	if (res.status == 200) {
+		const data = await res.json();
+
+		return data;
+	}
+
+	throw "The api returned an invalid response, try again later";
 }
 
 async function get_surah_reciters() {
@@ -67,30 +72,46 @@ function get_page_reciters() {
 
 async function get_verse_count(surah) {
 	const res = await fetch(`http://api.quran.com/api/v3/chapters/${surah}`);
-	const data = await res.json();
-	return Number(data.chapter.verses_count);
+
+	if (res.status == 200) {
+		const data = await res.json();
+		return Number(data.chapter.verses_count);
+	}
+
+	throw "The api returned an invalid response, try again later";
 }
 
 async function get_surah_info(surah) {
 	const res = await fetch(`http://api.quran.com/api/v3/chapters/${surah}`);
-	const data = await res.json();
-	return {
-		name: data.chapter.name_simple,
-		arabic_name: data.chapter.name_arabic
-	};
+
+	if (res.status == 200) {
+
+		const data = await res.json();
+		return {
+			name: data.chapter.name_simple,
+			arabic_name: data.chapter.name_arabic
+		};
+	}
+
+	throw "The api returned an invalid response, try again later";
 }
 async function get_surah_names() {
 
 	const res = await fetch("http://api.quran.com/api/v3/chapters");
-	const data = await res.json();
 
-	const surah_names = {};
+	if (res.status == 200) {
+		const data = await res.json();
 
-	for (const surah of data.chapters) {
-		surah_names[surah.name_simple.toLowerCase()] = surah.id;
+		const surah_names = {};
+
+		for (const surah of data.chapters) {
+			surah_names[surah.name_simple.toLowerCase()] = surah.id;
+		}
+
+		return surah_names;
 	}
 
-	return surah_names;
+	throw "The api returned an invalid response, try again later";
 }
 
 async function get_surah_id_from_name(surah_name) {
@@ -104,7 +125,6 @@ module.exports = {
 	get_surah_info,
 	get_surah_names,
 	get_surah_id_from_name,
-
 	get_reciter_data,
 	get_surah_reciters,
 	get_ayah_reciters,
