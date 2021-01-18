@@ -38,7 +38,9 @@ class Bot extends Client {
 		}
 
 		this.on("ready", () => {
-			console.log("OK");
+			console.log(`Connected to Discord API`);
+			console.log(this.user.tag);
+			console.log("ID: ", this.user.id);
 
 			this.radio = this.voice.createBroadcast();
 			this.radio.play("https://Qurango.net/radio/tarateel");
