@@ -1,0 +1,24 @@
+{
+  "name": "Iqrajs",
+  "version": "1.0.0",
+  "description": "A Discord bot that can play Qur'an recitations in voice chat.",
+  "main": "app.js",
+  "author": "TheMaestroo",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "homepage": "https://github.com/TheMaestro0/Iqrajs",
+  "repository": "github:TheMaestro0/Iqrajs",
+  "bugs": "https://github.com/TheMaestro0/Iqrajs/issues",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.5.1",
+    "ffmpeg-static": "^4.2.7",
+    "node-fetch": "^2.6.1"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}

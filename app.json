@@ -1,0 +1,6 @@
+{
+  "name": "Iqrajs",
+  "description": "A Discord bot that can play Qur'an recitations in voice chat.",
+  "repository": "https://github.com/TheMaestro0/Iqrajs",
+  "keywords": ["discord", "discordjs", "quran", "bot"]
+}
