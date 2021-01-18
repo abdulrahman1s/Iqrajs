@@ -58,7 +58,7 @@ async function get_ayah_reciters() {
 }
 
 function get_page_reciters() {
-	return Object.keys(require("../JSON/reciters.json")).map((name) => {
+	return Object.keys(require("../../JSON/reciters.json")).map((name) => {
 		return {
 			name
 		};
@@ -107,5 +107,6 @@ module.exports = {
 
 	get_reciter_data,
 	get_surah_reciters,
-	get_ayah_reciters
+	get_ayah_reciters,
+	get_page_reciters
 };
