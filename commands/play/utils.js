@@ -65,7 +65,7 @@ async function get_ayah_reciters() {
 function get_page_reciters() {
 	return Object.keys(require("../../JSON/reciters.json")).map((name) => {
 		return {
-			name
+			name: name.split(" ").map(str => str.slice(0, 1).toUpperCase() + str.slice(1)).join(" ")
 		};
 	});
 }
