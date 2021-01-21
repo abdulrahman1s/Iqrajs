@@ -35,7 +35,7 @@ module.exports = class extends require("../structures/Command") {
 
 		for (const emoji of EMOJIS) await m.react(emoji);
 
-		const message_collector = message.channel.createMessageCollector((m) => m.author.id == message.author.id && /^[1-6][0-9]?[0-9]?$/.test(m.content), {
+		const message_collector = message.channel.createMessageCollector((m) => m.author.id == message.author.id && /^\d{1,3}$/.test(m.content), {
 				time: ONE_HOUR / 2
 			}),
 			reaction_collector = m.createReactionCollector((reaction, user) => user.id == message.author.id && EMOJIS.includes(reaction.emoji.name), {
@@ -73,7 +73,13 @@ module.exports = class extends require("../structures/Command") {
 
 		message_collector.on("collect", msg => {
 			msg.delete().catch(() => null);
-			page = parseInt(msg.content);
+			
+			const number = parseInt(msg.content);
+
+			if (number > PAGE_LIMIT || number <= 0) return;
+			
+			page = number;
+			
 			m.edit(embed
 				.setAuthor(`Page: ${page}/${PAGE_LIMIT}`)
 				.setImage(this.get_page_link(page))
