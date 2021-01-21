@@ -13,7 +13,7 @@ class Command {
 		speakable = false,
 		joinable = false,
 		botPermissions = ["EMBED_LINKS"],
-		cooldown = 1
+		cooldown = 3
 	}) {
 		this.client = client;
 

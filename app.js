@@ -101,7 +101,7 @@ client.on("message", async message => {
 		}
 	} catch (error) {
 		if (typeof error == "string") {
-			send(`:x: ${error}`);
+			send(`:x: | ${error}`);
 		} else {
 			console.error(error);
 			message.reply("There was an error trying to execute that command!");
