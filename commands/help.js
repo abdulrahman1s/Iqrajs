@@ -12,8 +12,8 @@ module.exports = class extends require("../structures/Command") {
 				content: "Lists all commands and how to use them.",
 				usage: "[command]"
 			},
-			cooldown: 2,
-			inVoiceChannel: true
+			aliases: ["مساعدة", "اوامر"],
+			cooldown: 2
 		});
 	}
 	async run(message, args) {
@@ -57,8 +57,7 @@ module.exports = class extends require("../structures/Command") {
 			.setColor(message.client.config.brand_color)
 			.setThumbnail(ICON)
 			.setDescription(`**Use \`${message.prefix}help <command>\` for more information about a command.**\nExample: \`${message.prefix}help play\`\n\n`)
-			.addField("Overview", commands)
-			.setFooter("Note: (volume, pause, resume) not working with live streams.");
+			.addField("Overview", commands);
 		return embed;
 	}
 };

@@ -7,6 +7,7 @@ module.exports = class extends require("../structures/Command") {
 	constructor(client) {
 		super(client, {
 			__filename,
+			aliases: ["قراء"],
 			cooldown: 5,
 			help: "Sends the lists of reciters for `q!play`.",
 			botPermissions: ["EMBED_LINKS", "READ_MESSAGE_HISTORY", "ADD_REACTIONS"]

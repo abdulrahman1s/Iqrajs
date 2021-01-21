@@ -6,7 +6,7 @@ module.exports = class extends require("../../structures/Command") {
 	constructor(client) {
 		super(client, {
 			__filename,
-			aliases: ["p"],
+			aliases: ["p", "شغل"],
 			help: {
 				content: "Plays a surah, ayah or page from the mushaf in a voice channel.",
 				usage: "<ayah|page|surah>",
@@ -38,10 +38,13 @@ module.exports = class extends require("../../structures/Command") {
 
 		switch (args[0].toLowerCase()) {
 			case "ayah":
+			case "اية":
 				return await ayahCommand(message, newArgs);
 			case "page":
+			case "صفحة":
 				return await pageCommand(message, newArgs);
 			case "surah":
+			case "سورة":
 				return await surahCommand(message, newArgs);
 			default:
 				throw `**Invalid arguments**. For help, type \`${message.prefix}help play\`.`;

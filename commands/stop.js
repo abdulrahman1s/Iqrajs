@@ -2,7 +2,7 @@ module.exports = class extends require("../structures/Command") {
 	constructor(client) {
 		super(client, {
 			__filename,
-			aliases: ["leave"],
+			aliases: ["leave", "توقف"],
 			help: "Disconnects the bot from voice chat.",
 			cooldown: 3,
 			inVoiceChannel: true,

@@ -2,7 +2,7 @@ module.exports = class extends require("../structures/Command") {
 	constructor(client) {
 		super(client, {
 			__filename,
-			aliases: ["vol"],
+			aliases: ["vol", "الصوت"],
 			help: "Changes the volume of the bot.",
 			cooldown: 3,
 			inVoiceChannel: true,
