@@ -1,63 +1,62 @@
-const ICON = "https://cdn.discordapp.com/app-icons/706134327200841870/e6bb860daa7702ea70e6d6e29c3d36f6.png";
-const {
-	MessageEmbed
-} = require("discord.js");
+const { MessageEmbed } = require('discord.js')
+const ICON_URL = 'https://cdn.discordapp.com/app-icons/706134327200841870/e6bb860daa7702ea70e6d6e29c3d36f6.png'
 
 
-module.exports = class extends require("../structures/Command") {
+module.exports = class extends require('../structures/Command') {
 	constructor(client) {
 		super(client, {
 			__filename,
 			help: {
-				content: "Lists all commands and how to use them.",
-				usage: "[command]"
+				content: 'Lists all commands and how to use them.',
+				usage: '[command]'
 			},
-			aliases: ["مساعدة", "اوامر"],
+			aliases: ['مساعدة', 'اوامر'],
 			cooldown: 2
-		});
+		})
 	}
-	async run(message, args) {
-		if (!args[0]) return this.generateHelpMenu(message);
+	run(message, args) {
+		if (!args[0]) return this.generateHelpMenu(message)
 
-		const commandName = args[0].toLowerCase();
-		const command = this.client.commands.get(commandName) || this.client.commands.get(client.aliases.get(commandName));
+		const commandName = args[0].toLowerCase()
+		const command = this.client.commands.get(commandName) || this.client.commands.get(this.client.aliases.get(commandName))
 
-		if (!command) return this.generateHelpMenu(message);
+		if (!command) return this.generateHelpMenu(message)
 
 		const {
 			name,
 			aliases
-		} = command;
+		} = command
 
 		const {
 			fields,
 			content: description,
 			usage
-		} = command.help;
+		} = command.help
 
 
 		const embed = new MessageEmbed()
-			.setThumbnail(ICON)
+			.setThumbnail(ICON_URL)
 			.setTitle(name)
-			.setColor(message.client.config.brand_color);
+			.setColor(message.client.config.brand_color)
 
-		embed.addField("Description: ", description);
-		embed.addField("Usage: ", `\`${message.prefix}${name} ${usage}\``);
+		embed.addField('Description: ', description)
+		embed.addField('Usage: ', `\`${message.prefix}${name} ${usage}\``)
 
-		if (aliases.length > 0) embed.addField("Aliases: ", aliases.map((aliase) => `\`${message.prefix + aliase}\``).join(", "));
+		if (aliases.length > 0) embed.addField('Aliases: ', aliases.map((alias) => `\`${message.prefix + alias}\``).join(', '))
 
-		for (const field of fields) embed.addField(field.name, field.value, true);
+		for (const field of fields) embed.addField(field.name, field.value, true)
 
-		return embed;
+		return embed
 	}
 	generateHelpMenu(message) {
-		const commands = message.client.commands.map((cmd) => `• \`${message.prefix}${cmd.name}\` - ${cmd.help.content}`).join("\n");
+		const commands = message.client.commands.map((cmd) => `• \`${message.prefix}${cmd.name}\` - ${cmd.help.content}`).join('\n')
 
 		const embed = new MessageEmbed()
 			.setColor(message.client.config.brand_color)
-			.setThumbnail(ICON)
+			.setThumbnail(ICON_URL)
 			.setDescription(`**Use \`${message.prefix}help <command>\` for more information about a command.**\nExample: \`${message.prefix}help play\`\n\n`)
-			.addField("Overview", commands);
-		return embed;
+			.addField('Overview', commands)
+
+		return embed
 	}
-};
+}

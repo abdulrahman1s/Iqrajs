@@ -1,24 +1,24 @@
-module.exports = class extends require("../structures/Command") {
+module.exports = class extends require('../structures/Command') {
 	constructor(client) {
 		super(client, {
 			__filename,
-			help: "Resumes the bot.",
-			aliases: ["تشغيل"],
+			help: 'Resumes the bot.',
+			aliases: ['تشغيل'],
 			cooldown: 2,
 			inVoiceChannel: true,
 			sameVoiceChannel: true,
 			playing: true
-		});
+		})
 	}
-	async run(message, args) {
+	run(message) {
 		const {
 			dispatcher
-		} = message.guild.me.voice.connection;
+		} = message.guild.me.voice.connection
 
-		const isPaused = dispatcher.paused;
+		const isPaused = dispatcher.paused
 
-		isPaused ? dispatcher.resume() : dispatcher.pause(true);
+		isPaused ? dispatcher.resume() : dispatcher.pause(true)
 		
-		return isPaused ? ":arrow_forward: **Resumed**." : ":pause_button: **Paused**.";
+		return isPaused ? ':arrow_forward: **Resumed**.' : ':pause_button: **Paused**.'
 	}
-};
+}
