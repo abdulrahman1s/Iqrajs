@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 const { MessageEmbed } = require('discord.js')
+const utils = require('./play/utils')
 
 module.exports = class extends require('../structures/Command') {
 	constructor(client) {
