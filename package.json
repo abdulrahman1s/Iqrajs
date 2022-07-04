@@ -13,7 +13,7 @@
   "repository": "github:TheMaestro0/Iqrajs",
   "bugs": "https://github.com/TheMaestro0/Iqrajs/issues",
   "dependencies": {
-    "@discordjs/opus": "^0.5.0",
+    "@discordjs/opus": "^0.8.0",
     "discord.js": "^12.5.3",
     "ffmpeg-static": "^4.3.0",
     "node-fetch": "^2.6.1"
